@@ -1,0 +1,48 @@
+{% trans_default_domain "umanit_ordered_collection" %}
+
+{% block umanit_ordered_collection_widget_row %}
+    {% spaceless %}
+        <div class="sonata-collection-row  umanit-sortable-element">
+            <hr/>
+
+            <span class="btn btn-info umanit-sort-up umanit-admin-collection-btn"><i class="glyphicon glyphicon-arrow-up"></i>{{ 'up'|trans }}</span>
+
+            {% if allow_delete %}
+                <a href="#" class="btn sonata-collection-delete btn-danger umanit-admin-collection-btn"><i class="fa fa-minus-circle"></i> {{ 'delete'|trans }}</a>
+            {% endif %}
+
+            <span class="btn btn-info umanit-sort-down umanit-admin-collection-btn"><i class="glyphicon glyphicon-arrow-down"></i>{{ 'down'|trans }}</span>
+
+            <div class="umanit-sortable-content">
+                {{ form_row(child) }}
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock umanit_ordered_collection_widget_row %}
+
+{% block umanit_ordered_collection_widget %}
+    {% spaceless %}
+        <div class="umanit-sortable-collection">
+            {% if prototype is defined %}
+                {% set child = prototype %}
+                {% set attr = attr|merge({'data-prototype': block('umanit_ordered_collection_widget_row'), 'data-prototype-name': prototype.vars.name, 'class': attr.class|default('') }) %}
+            {% endif %}
+            <div {{ block('widget_container_attributes') }}>
+
+                <div style="display:none;" class="umanit-collection-collection_max_items" data-value="{{ form.vars.collection_max_items }}"></div>
+                <div style="display:none;" class="umanit-collection-collection_min_items" data-value="{{ form.vars.collection_min_items }}"></div>
+                <div style="display:none;" class="umanit-collection-collection_orderable" data-value="{{ form.vars.collection_orderable ? "1" : "0" }}"></div>
+
+                {{ form_errors(form) }}
+                {% for child in form %}
+                    {{ block('umanit_ordered_collection_widget_row') }}
+                {% endfor %}
+                {{ form_rest(form) }}
+
+                {% if allow_add %}
+                    <div><a href="#" class="btn sonata-collection-add btn-success"><i class="fa fa-plus-circle"></i> {{ 'add'|trans }}</a></div>
+                {% endif %}
+            </div>
+        </div>
+    {% endspaceless %}
+{% endblock umanit_ordered_collection_widget %}

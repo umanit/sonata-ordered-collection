@@ -1,0 +1,4 @@
+up: 'Up'
+down: 'Down'
+delete: 'Remove element'
+add: 'Add element'

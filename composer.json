@@ -1,0 +1,20 @@
+{
+    "name": "umanit/sonata-ordered-collection",
+    "description": "Ordered collection form type for sonata",
+    "type": "symfony-bundle",
+    "keywords": ["symfony", "sonata", "form"],
+    "authors": [
+        {
+            "name": "Peekmo",
+            "email": "axel.anceau@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6",
+    },
+    "minimum-stability": "stable",
+    "target-dir": "Umanit/Bundle/SonataOrderedCollectionBundle",
+    "autoload": {
+        "psr-0": { "Umanit\\Bundle\\SonataOrderedCollectionBundle": "" }
+    }
+}

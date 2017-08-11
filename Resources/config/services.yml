@@ -1,0 +1,4 @@
+services:
+#    umanit_sonata_ordered_collection.example:
+#        class: Umanit\SonataOrderedCollectionBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

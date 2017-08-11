@@ -1,0 +1,18 @@
+.umanit-admin-collection-btn {
+    float: none;
+    margin: 5px;
+}
+
+.umanit-sortable-content {
+    background-color: #f6f6f6;
+    padding: 15px 40px 0px 40px;
+}
+
+div.sonata-collection-row a.umanit_delete_button{
+    display:none;
+}
+
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
+}

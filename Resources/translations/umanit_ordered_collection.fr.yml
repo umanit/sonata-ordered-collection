@@ -1,0 +1,4 @@
+up: 'Monter'
+down: 'Descendre'
+delete: 'Supprimer cet élément'
+add: 'Ajouter un élément'
