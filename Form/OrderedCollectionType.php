@@ -53,7 +53,7 @@ class OrderedCollectionType extends CollectionType
                         throw new InvalidArgumentException('The class must implement OrderableInterface : '.get_class($a));
                     }
 
-                    return $a->getPriority() > $b->getPriority();
+                    return $a->getPosition() > $b->getPosition();
                 });
 
                 $event->setData($entity);
@@ -65,7 +65,7 @@ class OrderedCollectionType extends CollectionType
                         throw new InvalidArgumentException('The class must implement OrderableInterface : '.get_class($a));
                     }
 
-                    return $a->getPriority() > $b->getPriority();
+                    return $a->getPosition() > $b->getPosition();
                 });
 
                 $entity->clear();
@@ -90,7 +90,7 @@ class OrderedCollectionType extends CollectionType
                         throw new InvalidArgumentException('The class must implement OrderableInterface : '.get_class($a));
                     }
 
-                    return $a->getPriority() > $b->getPriority();
+                    return $a->getPosition() > $b->getPosition();
                 });
 
                 $event->setData($entity);
@@ -102,7 +102,7 @@ class OrderedCollectionType extends CollectionType
                         throw new InvalidArgumentException('The class must implement OrderableInterface : '.get_class($a));
                     }
 
-                    return $a->getPriority() > $b->getPriority();
+                    return $a->getPosition() > $b->getPosition();
                 });
 
                 $entity->clear();
