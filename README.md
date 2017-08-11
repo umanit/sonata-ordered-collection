@@ -128,6 +128,11 @@ In your admin, call it like that :
 ->end()
 ```
 
+Nows, to get the elements in the right order, add the orderBy annotation on the right attribute
+```
+ @ORM\OrderBy({"position" = "ASC"})
+```
+
 ## Repeat a sonata field
 
 If you need to repeat a sonata field, you need to add some configuration (e.g for `sonata_media` field)
