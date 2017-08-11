@@ -14,7 +14,7 @@ class OrderableFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('priority', HiddenType::class, ['attr' => ['class' => 'umanit-sortable-order']])
+            ->add('position', HiddenType::class, ['attr' => ['class' => 'umanit-sortable-order']])
         ;
     }
 }
