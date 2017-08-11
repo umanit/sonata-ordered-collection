@@ -11,7 +11,7 @@ use Doctrine\ORM\PersistentCollection;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
-use AppBundle\Model\OrderableInterface;
+use Umanit\Bundle\SonataOrderedCollectionBundle\Model\OrderableInterface;
 
 /**
  * Class OrderedCollectionType.
