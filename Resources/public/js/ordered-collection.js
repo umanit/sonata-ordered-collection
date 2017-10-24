@@ -33,8 +33,25 @@ var reorderElements = function() {
     }
 };
 
+
 // Register up/down ecents
 var registerEvents = function() {
+    /**
+     * Reset CKEditor cause it doesn't work when the editor is moving in the DOM 
+     */
+    var resetCkEditor = function(container) {
+        if (Object.keys(CKEDITOR.instances).length) {
+            for (instance in CKEDITOR.instances) {
+                if (container.find('#' + instance).length > 0) {
+                    var config = CKEDITOR.instances[instance].config;
+
+                    CKEDITOR.instances[instance].destroy();
+                    CKEDITOR.replace(instance, config);    
+                }
+            }
+        }
+    }
+
     jQuery(".umanit-sort-up").on('click', function() {
         var parent = jQuery(this).parent('.umanit-sortable-element');
         var previous = parent.prev('.umanit-sortable-element');
@@ -42,6 +59,7 @@ var registerEvents = function() {
         if (previous.length > 0) {
             parent.after(previous);
             reorderElements();
+            resetCkEditor(previous);
         }
     });
 
@@ -52,6 +70,7 @@ var registerEvents = function() {
         if (next.length > 0) {
             parent.before(next);
             reorderElements();
+            resetCkEditor(next);
         }
     });
 
