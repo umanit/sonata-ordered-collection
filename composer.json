@@ -1,5 +1,5 @@
 {
-    "name": "umanit/sonata-ordered-collection",
+    "name": "paulboenisch/sonata-ordered-collection",
     "description": "Ordered collection form type for sonata",
     "type": "symfony-bundle",
     "keywords": ["symfony", "sonata", "form"],
@@ -7,6 +7,10 @@
         {
             "name": "Peekmo",
             "email": "axel.anceau@gmail.com"
+        },
+        {
+            "name": "Paul Bönisch",
+            "email": "boenisch83@gmail.com"
         }
     ],
     "require": {
