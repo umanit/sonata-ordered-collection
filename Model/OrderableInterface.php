@@ -17,4 +17,10 @@ interface OrderableInterface
      * @return int
      */
     public function getPosition();
+
+	/**
+	 * Returns current entity name over __toString() method
+	 * @return mixed
+	 */
+    public function getName();
 }
