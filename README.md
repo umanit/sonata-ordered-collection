@@ -41,7 +41,7 @@ That's all ! easy isn't it ?
 
 ## Usage
 
-Create an entity that implements `OrderableInterface` (you can use the `OrderableTrait` if you want to save time)
+Create an entity that implements `OrderableInterface` (you can use the `OrderableTrait` if you want to save time). Use OrderableOwnerTrait in OderableInterface ownling class.
 
 ```php
 <?php
@@ -110,7 +110,7 @@ class MyClassType extends OrderableFormType
 }
 ```
 
-In your admin, call it like that :
+In your admin use OrderableOwnerAdminTrait and call it like that :
 ```php
 <?php
 
