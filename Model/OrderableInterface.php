@@ -28,7 +28,7 @@ interface OrderableInterface
 	 * Sets positions among different entities
 	 * @return mixed
 	 */
-    public function setPositions();
+    public function setPositions(string $positions);
 
 	/**
 	 * Returns current entity name over __toString() method
