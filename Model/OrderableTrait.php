@@ -5,6 +5,10 @@ namespace Umanit\Bundle\SonataOrderedCollectionBundle\Model;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+/**
+ * Trait OrderableTrait
+ * @package Umanit\Bundle\SonataOrderedCollectionBundle\Model
+ */
 trait OrderableTrait
 {
 	/**

@@ -2,9 +2,12 @@
 
 namespace Umanit\Bundle\SonataOrderedCollectionBundle\Model;
 
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+/**
+ * Trait OrderableOwnerAdminTrait
+ * @package Umanit\Bundle\SonataOrderedCollectionBundle\Model
+ */
 trait OrderableOwnerAdminTrait
 {
 
@@ -18,11 +21,11 @@ trait OrderableOwnerAdminTrait
 		$objectId = $object->getId();
 		$objectClass = get_class($object);
 		foreach ($items as $itemTmp){
-			$teaserId = $itemTmp->getId();
-			$teaser = $repository->find($teaserId);
-			if(!empty($teaser)) {
+			$itemId = $itemTmp->getId();
+			$item = $repository->find($itemId);
+			if(!empty($item)) {
 				$position = $itemTmp->getPosition();
-				$positionsData = $teaser->getPositions();
+				$positionsData = $item->getPositions();
 				$positions = json_decode($positionsData);
 				if(empty($positions)){
 					$positions = new \stdClass();
@@ -32,8 +35,8 @@ trait OrderableOwnerAdminTrait
 				}
 				$positions->{$objectClass}->{$objectId} = $position;
 				$json = json_encode($positions);
-				$teaser->setPositions($json);
-				$collection->add( $teaser );
+				$item->setPositions($json);
+				$collection->add( $item );
 			}
 		}
 		$object->setOrderableCollection($collection);

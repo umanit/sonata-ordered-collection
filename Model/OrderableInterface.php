@@ -2,6 +2,10 @@
 
 namespace Umanit\Bundle\SonataOrderedCollectionBundle\Model;
 
+/**
+ * Interface OrderableInterface
+ * @package Umanit\Bundle\SonataOrderedCollectionBundle\Model
+ */
 interface OrderableInterface
 {
     /**
