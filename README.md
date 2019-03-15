@@ -57,13 +57,14 @@ class Answer implements OrderableInterface
 }
 ```
 
-Create the associated form that will be repeated, with a field "hidden" and the "umanit-sortable-order" CSS class
+Create the associated form that will be repeated, with a field "hidden" and the "umanit-sortable-order" CSS class. Add ```$this->initIndex();``` to ``MyClassType`` constructor.
 
 ```php
 <?php
 
-class MyClassType extends AbstractType
+class MyClassType extends AbstractType, implements OrderableTypeInterface
 {
+	use OrderableTypeTrait;
     /**
      * {@inheritdoc}
      */
