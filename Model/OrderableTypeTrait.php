@@ -21,18 +21,20 @@ trait OrderableTypeTrait
 		$subject = $this->modelManager->find($ownerClass, $request->attributes->get('id'));
 
 		$currentItem = null;
-		try {
-			$teasers = $subject->getOrderableCollection()->getValues();
-			$subjectId = $subject->getId();
-			$subjectClass = get_class($subject);
-			$currentIndex = $index;
-			$currentItem = array_filter($teasers, function($item) use ($subjectClass, $subjectId, $currentIndex){
-				return $item->getEntityPosition($subjectClass, $subjectId) == (string)$currentIndex;
-			});
+		if(!empty($subject)) {
+			try {
+				$teasers      = $subject->getOrderableCollection()->getValues();
+				$subjectId    = $subject->getId();
+				$subjectClass = get_class( $subject );
+				$currentIndex = $index;
+				$currentItem  = array_filter( $teasers, function ( $item ) use ( $subjectClass, $subjectId, $currentIndex ) {
+					return $item->getEntityPosition( $subjectClass, $subjectId ) == (string) $currentIndex;
+				} );
 
-			$currentItem = array_shift($currentItem);
-		}catch (\Exception $e){
+				$currentItem = array_shift( $currentItem );
+			} catch ( \Exception $e ) {
 
+			}
 		}
 
 		return $currentItem;

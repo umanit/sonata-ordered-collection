@@ -15,7 +15,7 @@ trait OrderableTrait
 	 * Current save position
 	 * @var int
 	 *
-	 * @ORM\Column(name="position", type="integer")
+	 * @ORM\Column(name="position", type="integer", nullable=true)
 	 */
 	protected $position;
 	/**
