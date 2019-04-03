@@ -18,23 +18,27 @@ trait OrderableTypeTrait
 		global $index, $request;
 		$index++;
 		$ownerClass = $this->getOwnerClass();
-		$subject = $this->modelManager->find($ownerClass, $request->attributes->get('id'));
-
+		$attributes = $request->attributes;
 		$currentItem = null;
-		if(!empty($subject)) {
-			try {
-				$teasers      = $subject->getOrderableCollection()->getValues();
-				$subjectId    = $subject->getId();
-				$subjectClass = get_class( $subject );
-				$currentIndex = $index;
-				$currentItem  = array_filter( $teasers, function ( $item ) use ( $subjectClass, $subjectId, $currentIndex ) {
-					return $item->getEntityPosition( $subjectClass, $subjectId ) == (string) $currentIndex;
-				} );
+		if(!empty($attributes)) {
+			$subject = $this->modelManager->find( $ownerClass, $attributes->get( 'id' ) );
 
-				$currentItem = array_shift( $currentItem );
-			} catch ( \Exception $e ) {
+			if ( ! empty( $subject ) ) {
+				try {
+					$teasers      = $subject->getOrderableCollection()->getValues();
+					$subjectId    = $subject->getId();
+					$subjectClass = get_class( $subject );
+					$currentIndex = $index;
+					$currentItem  = array_filter( $teasers, function ( $item ) use ( $subjectClass, $subjectId, $currentIndex ) {
+						return $item->getEntityPosition( $subjectClass, $subjectId ) == (string) $currentIndex;
+					} );
 
+					$currentItem = array_shift( $currentItem );
+				} catch ( \Exception $e ) {
+
+				}
 			}
+
 		}
 
 		return $currentItem;
