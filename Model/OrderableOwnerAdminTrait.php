@@ -35,6 +35,7 @@ trait OrderableOwnerAdminTrait
 				}
 				$positions->{$objectClass}->{$objectId} = $position;
 				$json = json_encode($positions);
+				$item->setPosition($position);
 				$item->setPositions($json);
 				$collection->add( $item );
 			}
