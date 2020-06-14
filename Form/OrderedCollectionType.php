@@ -52,8 +52,20 @@ class OrderedCollectionType extends CollectionType
                     if (!$a instanceof OrderableInterface) {
                         throw new InvalidArgumentException('The class must implement OrderableInterface : '.get_class($a));
                     }
+                    if(is_array($a)){
+                        $positionA = $a['position'];
+                    }else{
+                        $positionA = $a->getPosition();
+                    }
+                    if(is_array($b)){
+                        $positionB = $b['position'];
+                    }else{
+                        $positionB = $b->getPosition();
+                    }
 
-                    return $a->getPosition() > $b->getPosition();
+                    $result = $positionA > $positionB;
+
+                    return $result;
                 });
 
                 $event->setData($entity);

@@ -21,10 +21,18 @@ trait OrderableOwnerAdminTrait
 		$objectId = $object->getId();
 		$objectClass = get_class($object);
 		foreach ($items as $itemTmp){
-			$itemId = $itemTmp->getId();
-			$item = $repository->find($itemId);
-			if(!empty($item)) {
-				$position = $itemTmp->getPosition();
+            if(is_array($itemTmp)){
+                $itemId = $itemTmp['id'];
+            }else {
+                $itemId = $itemTmp->getId();
+            }
+            $item = $repository->find($itemId);
+            if(!empty($item)) {
+                if(is_array($itemTmp)){
+                    $position = $itemTmp['position'];
+                }else {
+                    $position = $itemTmp->getPosition();
+                }
 				$positionsData = $item->getPositions();
 				$positions = json_decode($positionsData);
 				if(empty($positions)){
