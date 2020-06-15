@@ -77,7 +77,20 @@ class OrderedCollectionType extends CollectionType
                         throw new InvalidArgumentException('The class must implement OrderableInterface : '.get_class($a));
                     }
 
-                    return $a->getPosition() > $b->getPosition();
+                    if(is_array($a)){
+                        $positionA = $a['position'];
+                    }else{
+                        $positionA = $a->getPosition();
+                    }
+                    if(is_array($b)){
+                        $positionB = $b['position'];
+                    }else{
+                        $positionB = $b->getPosition();
+                    }
+
+                    $result = $positionA > $positionB;
+
+                    return $result;
                 });
 
                 $entity->clear();
