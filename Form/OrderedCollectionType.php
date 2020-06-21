@@ -49,9 +49,6 @@ class OrderedCollectionType extends CollectionType
             // Si le parent n'a pas encore été persisté, on a juste un tableau
             if (is_array($entity)) {
                 usort($entity, function ($a, $b) {
-                    if (!$a instanceof OrderableInterface) {
-                        throw new InvalidArgumentException('The class must implement OrderableInterface : '.get_class($a));
-                    }
                     if(is_array($a)){
                         $positionA = $a['position'];
                     }else{
@@ -73,9 +70,6 @@ class OrderedCollectionType extends CollectionType
                 $data = $entity->toArray();
 
                 usort($data, function ($a, $b) {
-                    if (!$a instanceof OrderableInterface) {
-                        throw new InvalidArgumentException('The class must implement OrderableInterface : '.get_class($a));
-                    }
 
                     if(is_array($a)){
                         $positionA = $a['position'];
