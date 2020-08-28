@@ -2,6 +2,10 @@
 
 namespace Umanit\Bundle\SonataOrderedCollectionBundle\Model;
 
+/**
+ * Interface OrderableInterface
+ * @package Umanit\Bundle\SonataOrderedCollectionBundle\Model
+ */
 interface OrderableInterface
 {
     /**
@@ -17,4 +21,22 @@ interface OrderableInterface
      * @return int
      */
     public function getPosition();
+
+	/**
+	 * Returns positions among different entities
+	 * @return mixed
+	 */
+    public function getPositions();
+
+	/**
+	 * Sets positions among different entities
+	 * @return mixed
+	 */
+    public function setPositions(string $positions);
+
+	/**
+	 * Returns current entity name over __toString() method
+	 * @return mixed
+	 */
+    public function getName();
 }

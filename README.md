@@ -41,7 +41,7 @@ That's all ! easy isn't it ?
 
 ## Usage
 
-Create an entity that implements `OrderableInterface` (you can use the `OrderableTrait` if you want to save time)
+Create an entity that implements `OrderableInterface` (you can use the `OrderableTrait` if you want to save time). Use OrderableOwnerTrait in OderableInterface ownling class.
 
 ```php
 <?php
@@ -57,13 +57,14 @@ class Answer implements OrderableInterface
 }
 ```
 
-Create the associated form that will be repeated, with a field "hidden" and the "umanit-sortable-order" CSS class
+Create the associated form that will be repeated, with a field "hidden" and the "umanit-sortable-order" CSS class. Add ```$this->initIndex();``` to ``MyClassType`` constructor.
 
 ```php
 <?php
 
-class MyClassType extends AbstractType
+class MyClassType extends AbstractType, implements OrderableTypeInterface
 {
+	use OrderableTypeTrait;
     /**
      * {@inheritdoc}
      */
@@ -110,7 +111,7 @@ class MyClassType extends OrderableFormType
 }
 ```
 
-In your admin, call it like that :
+In your admin use OrderableOwnerAdminTrait and call it like that :
 ```php
 <?php
 
